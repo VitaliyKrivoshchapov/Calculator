@@ -22,7 +22,7 @@ public class Rim {
     { int rez= 0;
         for (int i = 0; i < arrArab.length; i++)
         {
-            if (arrArab[i].equals(number)) rez = i;
+            if (arrArab[i].equals(number)) {rez = i; break;}
 
         }return rez + 1;
     }
@@ -32,40 +32,33 @@ public class Rim {
     }
 
     public void outRim()
-    { int rezOutRim;
-      int rezArab;
+    { int rezArab;
       switch (znak)
         {
             case "+":
-            {   int n = rimToArab(number1);
-                int k = rimToArab(number2);
-                rezArab = n + k;
+            {
+                rezArab = rimToArab(number1) + rimToArab(number2);
                 System.out.println(arabToRim(rezArab));
                 break;
             }
             case "-":
-            {   int n = rimToArab(number1);
-                int k = rimToArab(number2);
-                rezArab = n - k;
-                if (k>n) System.out.println("I don't know negative numbers");
+            {
+                rezArab = rimToArab(number1) - rimToArab(number2);
+                if (rimToArab(number1) < rimToArab(number2)) System.out.println("I don't know negative numbers");
                 else System.out.println(arabToRim(rezArab));
                 break;
             }
 
             case "*":
             {
-                int n = rimToArab(number1);
-                int k = rimToArab(number2);
-                rezArab = n * k;
+                rezArab = rimToArab(number1) * rimToArab(number2);
                 System.out.println(arabToRim(rezArab));
                     break;
             }
             case "/":
-            {   int n = rimToArab(number1);
-                int k = rimToArab(number2);
-                if (k == 0)
+            {   if (rimToArab(number2) == 0)
                         { System.out.println("I can't divide by zero");break;}
-                rezArab = n / k;
+                rezArab = rimToArab(number1) / rimToArab(number2);
                 System.out.println(arabToRim(rezArab));
                 break;
             }
